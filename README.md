@@ -1,7 +1,8 @@
 # Laravel Jetstream + Vite
-* [🚅 How to](https://zenn.dev/yamabiko/articles/laravel-jetstream-vite)
+## How to
+[🚅 tech article](https://zenn.dev/yamabiko/articles/laravel-jetstream-vite)
 
-# Set up
+## Set up
 ```bash
 $ composer update laravel/sail
 $ sail up -d
