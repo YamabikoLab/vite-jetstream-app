@@ -34,11 +34,21 @@ class ViteServiceProvider extends ServiceProvider
             HTML);
             } else {
                 $manifest = json_decode(File::get(public_path('dist/manifest.json')), true);
+                $appJs = $this->getAppJs($manifest);
+                $appCss = $this->getAppCss($manifest);
                 return new HtmlString(<<<HTML
-                <script type="module" src="/dist/{$manifest['resources/js/app.js']['file']}"></script>
-                <link rel="stylesheet" href="/dist/{$manifest['resources/js/app.js']['css'][0]}">
+                <script type="module" src="/dist/{$appJs}"></script>
+                <link rel="stylesheet" href="/dist/{$appCss}">
             HTML);
             }
         });
+    }
+
+    private function getAppJs(array $manifest) {
+        return $manifest['resources/js/app.js']['file'];
+    }
+
+    private function getAppCss(array $manifest) {
+        return $manifest['resources/js/app.js']['css'][0];
     }
 }
